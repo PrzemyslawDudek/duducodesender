@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Sender</title>
+</head>
+<body>
+
+<h1>Email Sender</h1>
+<h2>Create mail</h2>
+
+<p th:if="${message != null}" th:text="${message}">
+
+</p>
+
+<form th:action="@{/send_mail}" method="post" th:object="${mailSenderForm}">
+
+    <p>
+        <label for="mail_to">mail to:</label>
+        <input id="mail_to" type="email" th:field="*{mailTo}">
+    </p>
+
+    <p>
+        <label for="subject">Subject:</label>
+        <input id="subject" type="text" th:field="*{subject}">
+    </p>
+
+    <p>
+        <label for="content">content:</label>
+        <input id="content" type="text" th:field="*{content}">
+    </p>
+
+    <p>
+        <label for="mail_from">mail from:</label>
+        <input id="mail_from" type="email" th:field="*{mailFrom}">
+    </p>
+
+    <p>
+        <label for="password">password:</label>
+        <input id="password" type="password" th:field="*{password}">
+    </p>
+
+    <p>
+        <input type="submit" th:value="submit">
+    </p>
+
+</form>
+
+</body>
+</html>
