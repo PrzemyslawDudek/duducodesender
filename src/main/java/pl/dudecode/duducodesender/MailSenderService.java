@@ -2,6 +2,7 @@ package pl.dudecode.duducodesender;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,12 @@ public class MailSenderService {
     @Autowired
     public MailSenderService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
+    }
+
+    public void setAuthorization(String username, String password) {
+        JavaMailSenderImpl javaMailSenderImpl = (JavaMailSenderImpl) javaMailSender;
+        javaMailSenderImpl.setUsername(username);
+        javaMailSenderImpl.setPassword(password);
     }
 
     public void sendMail(String to,

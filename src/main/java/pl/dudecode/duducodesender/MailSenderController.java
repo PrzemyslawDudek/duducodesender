@@ -33,8 +33,8 @@ public class MailSenderController {
 
     @PostMapping("/send_mail")
     public String sendMail(MailSenderForm mailSenderForm) {
-        //todo set sender maila and password
         try {
+            mailSenderService.setAuthorization(mailSenderForm.getMailFrom(), mailSenderForm.getPassword());
             mailSenderService.sendMail(
                     mailSenderForm.getMailTo(),
                     mailSenderForm.getSubject(),
